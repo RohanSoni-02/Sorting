@@ -20,10 +20,26 @@ void bubbleSort(int array[],int size){
     }
 }
 
+void selectionSort(int array[], int size){
+    for(int i = 0; i < size; i++){
+        int minIndex = i;
+        for (int j = i+1; j < size; j++) {
+            if (array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if(i != minIndex){
+            int temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+    }
+}
+
 int main(int argc, const char * argv[]) {
     int arr1[] = {4,7,9,2,3,1};
     int size = sizeof(arr1)/sizeof(arr1[0]);
-    bubbleSort(arr1, size);
+    selectionSort(arr1, size);
     for(auto value: arr1){
         cout<< value << " ";
     }
