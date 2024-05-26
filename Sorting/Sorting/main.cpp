@@ -36,10 +36,22 @@ void selectionSort(int array[], int size){
     }
 }
 
+void insertionSort(int array[], int size){
+    for(int i=1; i<size;i++){
+        int temp = array[i];
+        int j = i-1;
+        while (j>-1 && temp < array[j]) {
+            array[j+1] = array[j];
+            array[j] = temp;
+            j--;
+        }
+    }
+}
+
 int main(int argc, const char * argv[]) {
     int arr1[] = {4,7,9,2,3,1};
     int size = sizeof(arr1)/sizeof(arr1[0]);
-    selectionSort(arr1, size);
+    insertionSort(arr1, size);
     for(auto value: arr1){
         cout<< value << " ";
     }
