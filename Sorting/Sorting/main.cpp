@@ -48,9 +48,9 @@ void insertionSort(int array[], int size){
     }
 }
 
-/*merge sort code for splitting to sub arrays*/
-
+//helper function
 void merge(int array[], int leftindex, int midIndex, int rightIndex){
+    /*merge sort code for splitting to sub arrays*/
     int leftArraySize = midIndex - leftindex +1;
     int rightArraySize = rightIndex - midIndex;
     
@@ -64,6 +64,7 @@ void merge(int array[], int leftindex, int midIndex, int rightIndex){
         rightArray[j] = array[midIndex+1 + j];
     }
     
+    /*merge sort code for combining sub arrays*/
     int i=0;
     int j=0;
     int index = leftindex;
@@ -94,10 +95,19 @@ void merge(int array[], int leftindex, int midIndex, int rightIndex){
     }
 }
 
+void mergeSort(int array[], int leftIndex, int rightIndex){
+    if(leftIndex >= rightIndex) return;
+    
+    int midIndex = leftIndex + (rightIndex-leftIndex)/2;
+    mergeSort(array, leftIndex, midIndex);
+    mergeSort(array, midIndex+1, rightIndex);
+    merge(array, leftIndex, midIndex, rightIndex);
+}
+
 int main(int argc, const char * argv[]) {
     int arr1[] = {4,7,9,2,3,1};
     int size = sizeof(arr1)/sizeof(arr1[0]);
-    insertionSort(arr1, size);
+    mergeSort(arr1, 0, size-1);
     for(auto value: arr1){
         cout<< value << " ";
     }
