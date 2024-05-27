@@ -48,6 +48,23 @@ void insertionSort(int array[], int size){
     }
 }
 
+/*merge sort code for splitting to sub arrays*/
+
+void merge(int array[], int leftindex, int midIndex, int rightIndex){
+    int leftArraySize = midIndex - leftindex +1;
+    int rightArraySize = rightIndex - midIndex;
+    
+    int leftArray[leftArraySize];
+    int righArray[rightArraySize];
+    
+    for (int i=0; i<leftArraySize; i++) {
+        leftArray[i] = array[leftindex+i];
+    }
+    for (int j=0; j<rightArraySize; j++) {
+        righArray[j] = array[midIndex+1 + j];
+    }
+}
+
 int main(int argc, const char * argv[]) {
     int arr1[] = {4,7,9,2,3,1};
     int size = sizeof(arr1)/sizeof(arr1[0]);
