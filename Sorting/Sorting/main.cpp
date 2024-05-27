@@ -55,13 +55,42 @@ void merge(int array[], int leftindex, int midIndex, int rightIndex){
     int rightArraySize = rightIndex - midIndex;
     
     int leftArray[leftArraySize];
-    int righArray[rightArraySize];
+    int rightArray[rightArraySize];
     
     for (int i=0; i<leftArraySize; i++) {
         leftArray[i] = array[leftindex+i];
     }
     for (int j=0; j<rightArraySize; j++) {
-        righArray[j] = array[midIndex+1 + j];
+        rightArray[j] = array[midIndex+1 + j];
+    }
+    
+    int i=0;
+    int j=0;
+    int index = leftindex;
+    
+    while (i<leftArraySize && j<rightArraySize) {
+        if (leftArray[i] <= rightArray[j]) {
+            array[index] = leftArray[i];
+            index++;
+            i++;
+        }
+        else{
+            array[index] = rightArray[j];
+            index++;
+            j++;
+        }
+    }
+    
+    while (i<leftArraySize) {
+        array[index] = leftArray[i];
+        index++;
+        i++;
+    }
+    
+    while (j<rightArraySize) {
+        array[index] = rightArray[j];
+        index++;
+        j++;
     }
 }
 
