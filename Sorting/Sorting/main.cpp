@@ -104,6 +104,24 @@ void mergeSort(int array[], int leftIndex, int rightIndex){
     merge(array, leftIndex, midIndex, rightIndex);
 }
 
+void swap(int array[], int firstIndex, int lastIndex){
+    int temp = array[firstIndex];
+    array[firstIndex] = array[lastIndex];
+    array[lastIndex] = temp;
+}
+
+int pivot(int array[], int pivotIndex, int endIndex){
+    int swapIndex = pivotIndex;
+    for(int i= pivotIndex + 1; i<=endIndex; i++){
+        if (array[swapIndex] < array[i]) {
+            swapIndex++;
+            swap(array, swapIndex, i);
+        }
+    }
+    swap(array,pivotIndex,swapIndex);
+    return swapIndex;
+}
+
 int main(int argc, const char * argv[]) {
     int arr1[] = {4,7,9,2,3,1};
     int size = sizeof(arr1)/sizeof(arr1[0]);
