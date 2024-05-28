@@ -113,7 +113,7 @@ void swap(int array[], int firstIndex, int lastIndex){
 int pivot(int array[], int pivotIndex, int endIndex){
     int swapIndex = pivotIndex;
     for(int i= pivotIndex + 1; i<=endIndex; i++){
-        if (array[swapIndex] < array[i]) {
+        if (array[i] < array[pivotIndex]) {
             swapIndex++;
             swap(array, swapIndex, i);
         }
@@ -123,7 +123,7 @@ int pivot(int array[], int pivotIndex, int endIndex){
 }
 
 void quickSort(int array[], int leftIndex, int rightIndex){
-    if(leftIndex >= 0 ){
+    if(leftIndex >= rightIndex ){
         return;
     }
     int pivotIndex = pivot(array, leftIndex, rightIndex);
@@ -134,7 +134,7 @@ void quickSort(int array[], int leftIndex, int rightIndex){
 int main(int argc, const char * argv[]) {
     int arr1[] = {4,7,9,2,3,1};
     int size = sizeof(arr1)/sizeof(arr1[0]);
-    mergeSort(arr1, 0, size-1);
+    quickSort(arr1, 0, size-1);
     for(auto value: arr1){
         cout<< value << " ";
     }
